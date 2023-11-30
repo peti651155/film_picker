@@ -12,13 +12,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        genreSpinner = findViewById(R.id.genreSpinner);
+        yearPicker = findViewById(R.id.yearPicker);
+        ratingBar = findViewById(R.id.ratingBar);
+        searchButton = findViewById(R.id.searchButton);
+        listView = findViewById(R.id.movieListView);
 
         LinearLayout mainLayout = new LinearLayout(this);
         mainLayout.setOrientation(LinearLayout.VERTICAL);
