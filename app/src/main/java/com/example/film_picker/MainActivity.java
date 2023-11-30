@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
         mainLayout.addView(yearPicker);
 
         ratingBar = new RatingBar(this);
-        ratingBar.setNumStars(10);
-        ratingBar.setStepSize(1.0f);
+        ratingBar.setNumStars(8);
+        ratingBar.setStepSize(0.50f);
         mainLayout.addView(ratingBar);
 
         searchButton = new Button(this);
