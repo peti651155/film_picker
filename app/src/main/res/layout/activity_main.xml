@@ -1,77 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:background="#5cb8ff">
+    android:padding="16dp"
+    android:paddingStart="16dp"
+    android:paddingLeft="16dp"
+    android:paddingTop="16dp"
+    android:paddingEnd="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp">
 
     <TextView
+        android:id="@+id/titleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Random Movie Picker"
+        android:background="@drawable/rounded_corner"
         android:gravity="center"
-        android:background="#ff6e40"
+        android:padding="16dp"
+        android:text="Random Movie Picker"
         android:textColor="#ffffff"
-        android:padding="20dp"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Kérjem válasszon ki egy műfajt:"
-        android:textColor="#ffffff"
-        android:layout_marginTop="16dp"/>
+        android:textAlignment="center"
+        android:textColor="#001768"
+        android:textSize="24sp" />
 
     <Spinner
         android:id="@+id/genreSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="47dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kérjem válasszon évet:"
-        android:textColor="#ffffff"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:pointerIcon="none"
+        android:text="Válasszon évet:"
+        android:textAlignment="center"
+        android:textColor="#001768"
+        android:textSize="24sp" />
 
     <NumberPicker
         android:id="@+id/yearPicker"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="115dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Kérjem válasszon értékelést:"
+        android:textAlignment="center"
         android:textColor="#ffffff"
-        android:layout_marginTop="16dp"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <RatingBar
         android:id="@+id/ratingBar"
-        style="?android:attr/ratingBarStyleSmall"
+        style="?android:attr/ratingBarStyleIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:numStars="5"
-        android:stepSize="1.0"/>
+        android:layout_gravity="center"
+        android:isIndicator="false"
+        android:numStars="10"
+        android:rating="0"
+        android:stepSize="0.5" />
+
 
     <Button
         android:id="@+id/searchButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fogaskerekek beindítása..."
         android:layout_marginTop="16dp"
-        android:background="#ff9800"
+        android:nestedScrollingEnabled="false"
+        android:text="Filmek listázása"
         android:textColor="#ffffff" />
-
-    <!-- A ListView vagy egy RecyclerView itt jönne, ahova a filmek listáját töltenéd -->
-    <!-- Például: -->
-    <ListView
-        android:id="@+id/movieListView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:divider="#ffffff"
-        android:dividerHeight="1dp"/>
 
 </LinearLayout>
