@@ -3,16 +3,19 @@ package com.example.film_picker;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class MoviesPagerAdapter extends RecyclerView.Adapter<MoviesPagerAdapter.ViewHolder> {
 
     private final ArrayList<Movie> movies;
     private int currentMovieIndex;
-
 
     public MoviesPagerAdapter(ArrayList<Movie> movies) {
         this.movies = movies;
@@ -28,9 +31,19 @@ public class MoviesPagerAdapter extends RecyclerView.Adapter<MoviesPagerAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        // A lapozáshoz mindig az aktuális film címét jelenítjük meg.
-        Movie currentMovie = movies.get(currentMovieIndex);
-        holder.textView.setText(currentMovie.getTitle());
+        Movie movie = movies.get(currentMovieIndex);
+        holder.textView.setText(movie.getTitle());
+
+        // Beállítjuk a posztert az ImageView elemre
+        String posterPath = movie.getPosterPath();
+        if (posterPath != null && !posterPath.isEmpty()) {
+            String posterUrl = "https://image.tmdb.org/t/p/original/" + posterPath;
+            Picasso.get().load(posterUrl).into(holder.imageView);
+        }
+
+        // Beállítjuk a vote_average értékét
+        double voteAverage = movie.getVoteAverage();
+        holder.ratingTextView.setText("Értékelés: " + voteAverage);
     }
 
     @Override
@@ -39,23 +52,31 @@ public class MoviesPagerAdapter extends RecyclerView.Adapter<MoviesPagerAdapter.
     }
 
     public void onNextMovie() {
+        if (movies.isEmpty()) {
+            return;
+        }
         currentMovieIndex = (currentMovieIndex + 1) % movies.size();
+        notifyDataSetChanged();
+    }
+
+    public void onPreviousMovie() {
+        if (movies.isEmpty()) {
+            return;
+        }
+        currentMovieIndex = (currentMovieIndex - 1 + movies.size()) % movies.size();
         notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
+        ImageView imageView;
+        TextView ratingTextView;
 
         public ViewHolder(View view) {
             super(view);
             textView = view.findViewById(R.id.textViewMovieTitle);
+            imageView = itemView.findViewById(R.id.imageViewPoster);
+            ratingTextView = itemView.findViewById(R.id.textViewRating);
         }
-    }
-    public void backToSearch(View view) {
-        // Bezárom ezt az Activity-t és visszatérek a MainActivity-hez
-        finish();
-    }
-
-    private void finish() {
     }
 }

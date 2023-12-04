@@ -96,7 +96,9 @@ public class MainActivity extends AppCompatActivity {
                         float movieRating = (float) movieObject.getDouble("vote_average");
                         if (movieRating >= selectedRating) {
                             String title = movieObject.getString("title");
-                            movies.add(new Movie(title));
+                            String posterPath = movieObject.getString("poster_path");
+                            Double voteAverage = movieObject.getDouble("vote_average");
+                            movies.add(new Movie(title, posterPath, voteAverage));
                         }
                     }
 
